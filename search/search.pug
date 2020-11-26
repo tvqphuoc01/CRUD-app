@@ -1,0 +1,54 @@
+doctype html
+html
+    head
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
+    body
+        .container-fluid.pt-3.pb-3.bg-dark.text-white
+            .row
+                .col-6
+                    .h1 NODEJS CRUD APP
+                .col-6.d-flex.align-items-center.justify-content-center
+                    .row
+                        .col-6
+                            a(href="/create") 
+                                button.btn.btn-success.pr-5.pl-5 CREAT
+                        .col-6
+                            button.btn.btn-warning.pr-5.pl-5 SEARCH
+        .container.pt-3.pb-3
+            form(action="/search/search" method="GET").form.mt-5
+                .form-group
+                    label(for="user") Username:
+                    input(name="username" type="text" class="form-control" id="Text")
+                    .container.d-flex.justify-content-center
+                        button(type="submit" class="btn btn-primary").mt-3.mb-3.pr-5.pl-5 Search
+        .container.pt-3.pb-3
+            if check == true
+                .alert.alert-danger USER DOESN'T EXIST!
+            if flag == true 
+                table.table.table-striped.table-dark
+                    thead
+                        tr
+                            th(scope="col") ID
+                            th(scope="col") USERNAME
+                            th(scope="col") EMAIL
+                            th(scope="col") PASSWORD
+                    tbody
+                        tr
+                            th(scope="col")= user.id
+                            th(scope="col")= user.username
+                            th(scope="col")= user.email
+                            th(scope="col")= user.password
+                            th(scope="col").row
+                                a(href="/delete/" + user.id).pl-3.pr-3.col-6
+                                    button.btn.btn-danger.pr-5.pl-5 DELETE
+
+        .container.d-flex.justify-content-center
+            a(href="/").pt-5.pb-5
+                button.btn.btn-danger.pr-5.pl-5 BACK TO MAIN PAGE    
+                            
+                        
+
+
+        script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous")
