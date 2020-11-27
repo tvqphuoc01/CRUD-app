@@ -2,15 +2,10 @@ const express = require('express');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-const db = require('../db');
+const controller = require('../controllers/update.controller');
 
-router.get('/updateUser', function(req, res) {
-  res.render('../updateUser/updateUser');
-});
+router.get('/:id', controller.updateRender);
 
-router.post('/updateUser/updateUser', function(req, res) {
-  db.get('user').find({id: id}).assign(req.body).write();
-  res.redirect('/');
-});
+router.post('/updateUser', controller.updateUser);
 
 module.exports = router;

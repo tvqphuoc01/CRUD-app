@@ -2,12 +2,8 @@ const express = require('express');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-const db = require('../db');
+const controller = require('../controllers/delete.controller');
 
-router.get('/:id', function(req, res) {
-  id = req.params.id;
-  db.get('user').remove({id: id}).write();
-  res.redirect('/');
-});
+router.get('/:id', controller.deleteUser);
 
 module.exports = router;

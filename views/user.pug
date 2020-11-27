@@ -17,7 +17,7 @@ html
                         th(scope="col")= user.email
                         th(scope="col")= user.password
                         th(scope="col").row
-                            a(href="/updateUser").pl-3.pr-3.col-6
+                            a(href="/updateUser/" + user.id).pl-3.pr-3.col-6
                                 button.btn.btn-success.pr-5.pl-5 EDIT
                             a(href="/delete/" + user.id).pl-3.pr-3.col-6
                                 button.btn.btn-danger.pr-5.pl-5 DELETE

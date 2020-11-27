@@ -5,7 +5,7 @@ const port = 3000;
 const db = require('./db');
 const userRouter = require('./route/user.route');
 const userCreate = require('./route/create.route');
-const userDelete = require('./route/delete.router');
+const userDelete = require('./route/delete.route');
 const userSearch = require('./route/search.route');
 const userUpdate = require('./route/update.route');
 
@@ -35,12 +35,12 @@ app.use('/user', userRouter);
 /**
  * search user by username
  */
-app.use('/user', userSearch);
+app.use('/search', userSearch);
 
 /**
  * update user
  */
-app.use('/update', userUpdate);
+app.use('/updateUser', userUpdate);
 
 /** delete user */
 app.use('/delete', userDelete);
