@@ -11,25 +11,25 @@ html
                     .row
                         .col-6
                             a(href="/create") 
-                                button.btn.btn-success.pr-5.pl-5 CREAT
+                                button.btn.btn-success.pr-5.pl-5 CREATE
                         .col-6
                             a(href="/search/search")
                                 button.btn.btn-warning.pr-5.pl-5 SEARCH
         .container.pt-3.pb-3
             table.table.table-striped.table-dark
                 thead
-                    tr
-                        th(scope="col") ID
-                        th(scope="col") USERNAME
+                    th(scope="col") ID
+                    th(scope="col") USERNAME
+                    th(scope="col").d-flex.justify-content-center ACTION
                 tbody
                     each val in ID
                         tr
                             th(scope="col")= val.id
                             th(scope="col")= val.username
-                            th.container.d-flex.justify-content-end.align-item-center
+                            th.container.d-flex.justify-content-center.align-item-center
                                     a(href="/user/" + val.id).pl-3.pr-3
                                         button.btn.btn-primary.pr-5.pl-5 VIEW
-                                    a(href="/delete/" + val.id).pl-3.pr-3 
+                                    a(href="/delete/" + val.id).pl-3.pr-3
                                         button.btn.btn-danger.pr-5.pl-5 DELETE    
                             
                         

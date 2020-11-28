@@ -6,29 +6,50 @@ module.exports.createRender = function(req, res) {
 };
 
 module.exports.checkPassword = function(req, res) {
-  /** Genarate user Id */
+  /** Generate user Id */
   req.body.id = shortid.generate();
 
-  /** Check user password */
+  const userName = req.body.username;
   const userPassword = req.body.password;
-  const value = req.body.username;
-  const userName = db.get('user').find({username: value}).value();
-  if (userPassword.length < 8 && userName !== undefined) {
-    res.render('../create/create', {
-      checkName: false,
-      checkPass: false,
-    });
-  } else if (userName !== undefined) {
-    res.render('../create/create', {
-      checkName: false,
-    });
-  } else if (userPassword.length < 8) {
-    res.render('../create/create', {
-      checkPass: false,
-    });
+  const userEmail = req.body.email;
+  const checkUserName = db.get('user').find({username: userName}).value();
+  const checkEmail = db.get('user').find({email: userEmail}).value();
+
+  // eslint-disable-next-line prefer-const
+  let errors = [];
+
+  /** Check user name and password, email */
+  if (!userName) {
+    errors.push('Username is required !!!');
   }
-  if (userPassword.length >= 8 && userName === undefined) {
-    db.get('user').push(req.body).write();
-    res.redirect('/');
+
+  if (!userPassword) {
+    errors.push('Password is required !!!');
   }
+
+  if (!userEmail) {
+    errors.push('Email is required !!!');
+  }
+
+  if (checkUserName !== undefined) {
+    errors.push('Sorry...Username already exist !!!');
+  }
+
+  if (checkEmail !== undefined) {
+    errors.push('This email has been taken, Do you already has an account?');
+  }
+
+  if (userPassword.length < 8 ) {
+    errors.push('Password must have at least 8 characters !!!');
+  }
+
+  if (errors.length !== 0) {
+    res.render('../create/create', {
+      errors: errors,
+    });
+    return;
+  }
+
+  db.get('user').push(req.body).write();
+  res.redirect('/');
 };

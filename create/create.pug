@@ -4,13 +4,14 @@ html
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
     body
         .container
-            form(action="../create/create" method="POST").form.mt-5
+            form(action="../create/create" method="POST").form.mt-
+                if errors
+                    each error in errors
+                        .form-group
+                                .alert.alert-danger= error
                 .form-group
                     label(for="user") Username
                     input(name="username" type="text" class="form-control" id="Text")
-                if checkName == false
-                    .form-group
-                        .alert.alert-danger Your username already exist!
                 .form-group
                     label(for="Email") Email address
                     input(name="email" type="email" class="form-control" id="Email")
@@ -18,9 +19,6 @@ html
                 .form-group
                     label(for="password") Password
                     input(name="password" type="password" class="form-control" id="Password")
-                if checkPass == false
-                    .form-group
-                        .alert.alert-danger you have to enter at least 8 digit!
                 .container.d-flex.justify-content-center
                     button(type="submit" class="btn btn-primary").mt-3.mb-3.pr-5.pl-5 Submit
         .container.d-flex.justify-content-center
