@@ -7,6 +7,6 @@ const controller = require('../controllers/create.controller');
 
 router.get('/', controller.createRender);
 
-router.post('/create', validate.validateCreate, controller.checkPassword);
+router.post('/create', validate.validateCreate, controller.createUser);
 
 module.exports = router;

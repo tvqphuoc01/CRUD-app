@@ -41,4 +41,6 @@ module.exports.validateCreate = function(req, res, next) {
     });
     return;
   }
+
+  next();
 };

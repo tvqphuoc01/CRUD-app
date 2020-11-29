@@ -5,7 +5,7 @@ module.exports.createRender = function(req, res) {
   res.render('../create/create');
 };
 
-module.exports.checkPassword = function(req, res) {
+module.exports.createUser = function(req, res) {
   /** Generate user Id */
   req.body.id = shortid.generate();
 
